@@ -20,7 +20,7 @@ RUN set -x \
     && rm bin/*.ps1 \
     && rm $WILDFLY_DOWN_FILE
 
-ADD standalone-full.xml standalone/configuration/standalone-full.xml
+COPY standalone-full.xml standalone/configuration/standalone-full.xml
 ENV JAVA_OPTS="$JAVA_OPTS -Djboss.server.default.config=standalone-full.xml"
 
 EXPOSE 8080 9990
