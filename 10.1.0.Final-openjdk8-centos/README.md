@@ -4,7 +4,7 @@ WildFly Application Server image
 ## How to deploy a WAR file
 1. Create a Dockerfile with the following content:
 ```
-FROM davimss/wildfly:X.Y.ZZ # Replace X.Y.ZZ by WildFly version
+FROM davimss/wildfly:X.Y.ZZ # Replace X.Y.ZZ with the WildFly version
 COPY MySystem.war standalone/deployments/MySystem.war
 ```    
 Put the Dockerfile and the *.WAR file on the same directory.
