@@ -4,12 +4,12 @@ WildFly Application Server image
 ## How to deploy a WAR file
 1. Create a Dockerfile with the following content:
 ```
-FROM davimss/wildfly:X.Y.ZZ # Replace X.Y.ZZ with the WildFly version
+FROM davimss/wildfly:10.1.0.Final
 COPY MySystem.war standalone/deployments/MySystem.war
-```    
+```
 Put the Dockerfile and the *.WAR file on the same directory.
 
-2. Call Docker to create your custom image, with the follwing command
+2. Call Docker to create your custom image, with the following command
 
 `docker build -t my-system-image .`
 
