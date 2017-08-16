@@ -8,6 +8,7 @@ ENV WILDFLY_HOME /opt/wildfly-$WILDFLY_VERSION
 ENV JBOSS_HOME $WILDFLY_HOME
 ENV PATH $WILDFLY_HOME/bin:$PATH
 ENV WILDFLY_DOWN_FILE wildfly-$WILDFLY_VERSION.tar.gz
+ENV CONFIG_FILE standalone-full.xml
 
 RUN mkdir -p "$WILDFLY_HOME"
 
@@ -20,10 +21,10 @@ RUN set -x \
     && rm bin/*.ps1 \
     && rm $WILDFLY_DOWN_FILE
 
-COPY standalone-full.xml standalone/configuration/standalone-full.xml
-ENV JAVA_OPTS="$JAVA_OPTS -Djboss.server.default.config=standalone-full.xml"
+COPY $CONFIG_FILE standalone/configuration/$CONFIG_FILE
+COPY standalone.conf bin/standalone.conf
 
 EXPOSE 8080 9990
 
-CMD bin/standalone.sh
+CMD bin/standalone.sh --server-config=$CONFIG_FILE -b 0.0.0.0
 
