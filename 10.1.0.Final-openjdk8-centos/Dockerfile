@@ -19,7 +19,8 @@ RUN set -x \
     && tar -xvf $WILDFLY_DOWN_FILE --strip-components=1 \
     && rm bin/*.bat \
     && rm bin/*.ps1 \
-    && rm $WILDFLY_DOWN_FILE
+    && rm $WILDFLY_DOWN_FILE ; \
+    && ln -s $WILDFLY_HOME /opt/wf
 
 COPY $CONFIG_FILE standalone/configuration/$CONFIG_FILE
 COPY standalone.conf bin/standalone.conf
