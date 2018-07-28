@@ -6,6 +6,8 @@ ENV JBOSS_HOME $WILDFLY_HOME
 ENV PATH $WILDFLY_HOME/bin:$PATH
 ENV WILDFLY_DOWN_FILE wildfly-$WILDFLY_VERSION.tar.gz
 ENV WILDFLY_BASE_DOWNLOAD_URL http://download.jboss.org/wildfly
+ENV WILDFLY_DEPLOY_DIR ${WILDFLY_HOME}/standalone/deployments
+ENV WILDFLY_CONFIG_DIR ${WILDFLY_HOME}/standalone/configuration
 
 RUN set -x ; \
     mkdir -p $WILDFLY_HOME ; \
@@ -19,8 +21,8 @@ RUN set -x ; \
 
 WORKDIR $WILDFLY_HOME
 
-COPY standalone.xml standalone/configuration
-COPY ojdbc6-12.1.0.2.jar standalone/deployments
+COPY standalone.xml ${WILDFLY_CONFIG_DIR}
+COPY ojdbc6-12.1.0.2.jar ${WILDFLY_DEPLOY_DIR}
 
 # EXPOSE 8080
 EXPOSE 8443
