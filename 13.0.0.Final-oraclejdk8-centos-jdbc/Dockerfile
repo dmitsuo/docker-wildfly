@@ -24,8 +24,7 @@ WORKDIR $WILDFLY_HOME
 COPY standalone.xml ${WILDFLY_CONFIG_DIR}
 COPY ojdbc6-12.1.0.2.jar ${WILDFLY_DEPLOY_DIR}
 
-# EXPOSE 8080
-EXPOSE 8443
+# EXPOSE 8080 8443
 
 #CMD bin/standalone.sh -b=0.0.0.0 -bmanagement=0.0.0.0
 CMD bin/standalone.sh -b=0.0.0.0
